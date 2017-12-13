@@ -9,10 +9,12 @@ class routerMap extends React.Component {
 	render() {
 		return (
 			<Router history={this.props.history}>
-				<Route path='/' component={App}>
-					<IndexRoute component={Home}/>
+				<div>
+					<App />
+					<Route path='/' component={Home} />
 					<Route path='/city' component={City}/>
-				</Route>
+				</div>
+				
 			</Router>
 		)
 	}
