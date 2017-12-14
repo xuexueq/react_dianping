@@ -16,10 +16,30 @@ module.exports = {
 
 	module: {
 
-		loaders: [{
+		rules: [{
 			test: /\.(js|jsx)$/,
 			exclude: /node_modules/,
-			loader: 'babel-loader'
+			use: 'babel-loader'
+		}, {
+			test: /\.less$/,
+			exclude: /node_modules/,
+			use: [{
+				loader: "style-loader" // creates style nodes from JS strings
+			}, {
+				loader: "css-loader" // translates CSS into CommonJS
+			}, {
+				loader: "less-loader" // compiles Less to CSS
+			}]
+		}, {
+			test: /\.css$/,
+			exclude: /node_modules/,
+			use: [{
+				loader: "style-loader" // creates style nodes from JS strings
+			}, {
+				loader: "css-loader" // translates CSS into CommonJS
+			}, {
+				loader: "postcss-loader"
+			}]
 		}]
 
 	},
@@ -29,10 +49,10 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: __dirname + '/app/index.tmpl.html'
 		}),
-		
+
 		// 热加载插件
 		new webpack.HotModuleReplacementPlugin(),
-		
+
 		// 打开浏览器
 		new OpenBrowserPlugin({
 			url: 'http://localhost:8080'
@@ -42,7 +62,7 @@ module.exports = {
 	devServer: {
 		//colors: true, //终端中输出结果为彩色 webpack3-CLI only使用命令行参数执行即可
 		historyApiFallback: true, //不跳转
-		inline: true,  //实时刷新
-		hot: true  // 使用热加载插件 HotModuleReplacementPlugin
+		inline: true, //实时刷新
+		hot: true // 使用热加载插件 HotModuleReplacementPlugin
 	}
 }

@@ -17,6 +17,12 @@ class App extends React.Component {
 			</div>
 		)
 	}
+
+	componentDidMount() {
+		this.setState({
+			initDone: true
+		})
+	}
 }
 
 export default App

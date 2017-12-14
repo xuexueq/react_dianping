@@ -1,20 +1,25 @@
 import React from 'react'
-import { Router, Route, IndexRoute } from 'react-router-dom'
+import { Router, Route, IndexRoute, Switch } from 'react-router-dom'
 
 import App from '../containers'
-import Home from '../containers/Home'
+import Home from '../containers/Home/'
 import City from '../containers/City'
+import NotFound from '../containers/NotFound'
 
 class routerMap extends React.Component {
 	render() {
 		return (
 			<Router history={this.props.history}>
-				<div>
-					<App />
-					<Route path='/' component={Home} />
-					<Route path='/city' component={City}/>
-				</div>
-				
+				<Route path='/' component={(props) => (
+					<App {...props}>
+						<Switch>
+							<Route exact path='/' component={Home} /> {/*exact关键字，这个关键字是将"/"做唯一匹配，否则"/"和"/xxx"都会匹配到path为"/"的路由*/}
+							<Route exact path='/city' component={City}/>
+							<Route component={NotFound}/>								
+						</Switch>
+					
+					</App>
+				)} />
 			</Router>
 		)
 	}
