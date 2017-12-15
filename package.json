@@ -30,11 +30,16 @@
     "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
+    "antd": "^3.0.1",
     "react": "^16.2.0",
+    "react-addons-pure-render-mixin": "^15.6.2",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "react-swipe": "^5.1.0",
+    "react-swipes": "^1.0.9",
+    "redux": "^3.7.2",
+    "swipe-js-iso": "^2.0.4"
   }
 }
