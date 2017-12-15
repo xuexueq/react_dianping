@@ -15,7 +15,7 @@ class Category extends React.Component {
 
 	render() {
 		const opt = {
-
+			auto: 2500,
 			callback: function(index) {
 				// 更新当前轮播图的index
 				this.setState({

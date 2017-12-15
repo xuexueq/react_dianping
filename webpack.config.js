@@ -40,6 +40,11 @@ module.exports = {
 			}, {
 				loader: "postcss-loader"
 			}]
+		}, {
+
+			test: /\.(png|gif|jpg|jpeg|bmp)$/i,
+			loader: 'url-loader?limit=5000'
+				// 限制大小5kb
 		}]
 
 	},
