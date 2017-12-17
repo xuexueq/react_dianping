@@ -9,7 +9,11 @@ class HomeAd extends React.Component {
 			<div id='home-ad'>
 				<h2>超值特惠</h2>
 				<div className="ad-container clear-fix">
-						gg
+					{
+						this.props.data.map((item, index) => {
+							return <div>item.title</div>
+						})
+					}
 				</div>
 			</div>
 		)

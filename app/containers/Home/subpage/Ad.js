@@ -16,7 +16,7 @@ class Ad extends React.Component {
 		return (
 			<div>
 				{
-					this.state.data.length ? <HomeAd /> : <div></div>
+					this.state.data.length ? <HomeAd data={this.state.data} /> : <div></div>
 				}
 				
 			</div>
@@ -27,10 +27,13 @@ class Ad extends React.Component {
 		//获取广告数据
 		let result = getAdData('/api/homead')
 
-		result.then(res => res.json)
+		result.then(res => {
+			console.log(res)
+			return res.json()
+		})
 		.then(json => {
 			let data = json
-			console.log(data.length)
+			console.log(data)
 
 			if(data.length) {
 				this.setState({

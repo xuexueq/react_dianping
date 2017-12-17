@@ -1,6 +1,7 @@
 const Koa = require('koa');
 const app = new Koa();
-var router = require('koa-router')();
+var r = require('koa-router');
+const router = new r()
 
 // router.get('/', function *(next) {
 //     this.body = 'hello koa !'
@@ -12,9 +13,9 @@ var router = require('koa-router')();
 
 // 首页 —— 广告（超值特惠）
 var homeAdData = require('./home/ad.js')
-router.get('/api/homead', function *(next) {
+router.get('/api/homead', function (ctx, next) {
 	console.log('11')
-    this.body = homeAdData
+    ctx.body = homeAdData
 });
 
 
