@@ -22,13 +22,13 @@ router.get('/api/homead', function(ctx, next) {
 var homeListData = require('./home/list.js')
 router.get('/api/homelist/:city/:page', function(ctx, next) {
 	// 参数
-	/*	const params = this.params
-		const paramsCity = params.city
-		const paramsPage = params.page
+	const params = ctx.params
+	const paramsCity = params.city
+	const paramsPage = params.page
 
-		console.log('当前城市：' + paramsCity)
-		console.log('当前页数：' + paramsPage)
-		console.log('222')*/
+	console.log('当前城市：' + paramsCity)
+	console.log('当前页数：' + paramsPage)
+	console.log('222')
 	ctx.body = homeListData
 });
 
