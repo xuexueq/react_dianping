@@ -1,5 +1,4 @@
 import React from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 import './HomeAd.less'
 
@@ -11,7 +10,11 @@ class HomeAd extends React.Component {
 				<div className="ad-container clear-fix">
 					{
 						this.props.data.map((item, index) => {
-							return <div>item.title</div>
+							return <div key={index} className='ad-item float-left'>
+								<a href={item.link} target='_blank'>
+									<img src={item.img} alt={item.title}/>
+								</a>
+							</div>
 						})
 					}
 				</div>
