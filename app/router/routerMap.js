@@ -6,8 +6,9 @@ import {
 	Switch
 } from 'react-router-dom'
 
-import App from '../containers'
+import App from '../containers/app'
 import Home from '../containers/Home/'
+import City from '../containers/City/City'
 import NotFound from '../containers/NotFound'
 
 class routerMap extends React.Component {
@@ -18,6 +19,7 @@ class routerMap extends React.Component {
 					<App {...props}>
 						<Switch>
 							<Route exact path='/' component={Home} /> {/*exact关键字，这个关键字是将"/"做唯一匹配，否则"/"和"/xxx"都会匹配到path为"/"的路由*/}
+							<Route exact path='/city' component={City} />
 							<Route component={NotFound}/>								
 						</Switch>
 					

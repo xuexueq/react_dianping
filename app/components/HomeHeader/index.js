@@ -1,5 +1,8 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import {
+	Link
+} from 'react-router-dom'
 
 import './style.less'
 
@@ -13,9 +16,11 @@ class Homeheader extends React.Component {
 		return (
 			<div id='home-header' className='clear-fix'>
 				<div className="home-header-left float-left">
-					<span>北京</span>
-					&nbsp;
-					<i className="iconfont icon-arrow-down-new"></i>
+					<Link to='/city'>
+						<span>北京</span>
+						&nbsp;
+						<i className="iconfont icon-arrow-down-new"></i>	
+					</Link>
 				</div>
 				<div className="home-header-right float-right">
 					<i className="iconfont icon-user"></i>

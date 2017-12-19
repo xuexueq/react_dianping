@@ -1,4 +1,5 @@
 import React from 'react'
+import PureRenderMixin from 'react-addons-pure-render-mixin'
 
 import {
 	getListData
@@ -9,11 +10,12 @@ import LoadMore from '../../../components/LoadMore/LoadMore'
 class List extends React.Component {
 	constructor(props) {
 		super(props)
+		this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
 		this.state = {
 			data: [],
-			page: 0,
-			hasMore: false,
-			isLoadingMore: false
+			page: 0, //加载数据的页数
+			hasMore: false, //记录当前状态下，是否还有更多数据,由后端返回
+			isLoadingMore: false //是否正在加载中
 		}
 	}
 
@@ -35,30 +37,23 @@ class List extends React.Component {
 		)
 	}
 
+	//加载后台数据
 	loadMoreData() {
 		this.setState({
-            isLoadingMore: true
-        })
-
-        //console.log('1', isLoadingMore)
+			isLoadingMore: true
+		})
 
 		let page = this.state.page
-		this.getData(page)	
-
-		this.setState({
-			page: page + 1,
-			isLoadingMore: false
-
-		})	
-		//console.log('2', isLoadingMore)
+		this.getData(page)
 	}
 
+	//获取首页数据
 	componentDidMount() {
-		//获取列表数据
 		this.getData(this.state.page)
 	}
 
-	getData (page) {
+	//获取后台列表数据
+	getData(page) {
 		let result = getListData(page)
 
 		result.then(res => {
@@ -68,11 +63,13 @@ class List extends React.Component {
 			.then(json => {
 				let data = json.data
 				let hasMore = json.hasMore
-				console.log(data)
+					//console.log(data)
 				if (data.length) {
 					this.setState({
 						data: this.state.data.concat(data),
-						hasMore: hasMore
+						hasMore: hasMore,
+						page: this.state.page + 1,
+						isLoadingMore: false
 					})
 				}
 			}).catch(ex => {
