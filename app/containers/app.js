@@ -32,9 +32,10 @@ class App extends React.Component {
 	componentDidMount() {
 		//获取位置信息
 		let cityName = LocalStore.getItem('city')
-		if (cityName == 'null') {
+		if (cityName == null) {
 			cityName = '北京'
 		}
+		//console.log(cityName)
 		this.props.userInfoActions.update({
 			cityName: cityName
 		})
