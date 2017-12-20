@@ -1,7 +1,7 @@
 import React from 'react'
 import {
 	connect
-} from 'redux'
+} from 'react-redux'
 
 import HomeHeader from '../../components/HomeHeader/'
 import Category from '../../components/Category/'
@@ -28,4 +28,8 @@ function mapStateToProps(state) {
 	}
 }
 
-export default Home
+function mapDispatchToProps(dispatch) {
+	return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
