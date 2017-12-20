@@ -3,7 +3,10 @@ const initialState = {}
 export default function userinfo(state = initialState, action) {
 	switch (action.type) {
 		case 'USERINFO_UPDATE':
-			return action.data
+			return {
+				cityName: action.data.cityName
+			}
+
 		default:
 			return state
 	}

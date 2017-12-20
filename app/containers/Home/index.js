@@ -1,4 +1,7 @@
 import React from 'react'
+import {
+	connect
+} from 'redux'
 
 import HomeHeader from '../../components/HomeHeader/'
 import Category from '../../components/Category/'
@@ -13,9 +16,15 @@ class Home extends React.Component {
 				<Category />
 				<div style={{height: '15px'}}></div>
 				<Ad />
-				<List />
+				<List cityName={this.props.cityName}/>
 			</div>
 		)
+	}
+}
+
+function mapStateToProps(state) {
+	return {
+		cityName: state.cityName
 	}
 }
 

@@ -18,9 +18,8 @@ class Ad extends React.Component {
 		return (
 			<div>
 				{
-					this.state.data.length ? <HomeAd data={this.state.data} /> : <div></div>
-				}
-				
+					this.state.data.length ? <HomeAd data={this.state.data} /> : <div>无广告数据</div>
+				}				
 			</div>
 		)
 	}
@@ -38,6 +37,7 @@ class Ad extends React.Component {
 					//console.log(data)
 
 				if (data.length) {
+					//console.log('homead', data)
 					this.setState({
 						data: data
 					})

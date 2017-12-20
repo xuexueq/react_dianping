@@ -23,7 +23,8 @@ class LoadMore extends React.Component {
 		let wrapper = this.refs.wrapper
 		let loadMoreFn = this.props.loadMoreFn
 
-		function callback() {
+		const callback = () => {
+			console.log('callback', this)
 			let top = wrapper.getBoundingClientRect().top
 			let windowHeight = window.screen.height
 			if (top && top < windowHeight) {
@@ -33,6 +34,7 @@ class LoadMore extends React.Component {
 
 		// 使用滚动时自动加载更多
 		window.addEventListener('scroll', function() {
+			//console.log('scroll', this)
 			if (isLoadingMore) {
 				return
 			}

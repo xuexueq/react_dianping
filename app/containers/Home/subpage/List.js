@@ -49,6 +49,7 @@ class List extends React.Component {
 
 	//获取首页数据
 	componentDidMount() {
+		console.log('cityname', this.props.cityName)
 		this.getData(this.state.page)
 	}
 
