@@ -26,5 +26,6 @@ function setItem(key, value) {
 
 
 export default {
-	getItem
+	getItem,
+	setItem
 }

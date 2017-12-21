@@ -24,7 +24,7 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		cityName: state.cityName
+		cityName: state.userinfo.cityName
 	}
 }
 
