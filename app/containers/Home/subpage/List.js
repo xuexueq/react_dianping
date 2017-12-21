@@ -49,13 +49,14 @@ class List extends React.Component {
 
 	//获取首页数据
 	componentDidMount() {
-		console.log('cityname', this.props.cityName)
+		//console.log('cityname', this.props.cityName)
 		this.getData(this.state.page)
 	}
 
 	//获取后台列表数据
 	getData(page) {
-		let result = getListData(page)
+		let cityName = this.props.cityName
+		let result = getListData(page, cityName)
 
 		result.then(res => {
 				//console.log(res)

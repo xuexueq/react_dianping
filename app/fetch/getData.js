@@ -11,8 +11,8 @@ export function getAdData(url) {
 	return result
 }
 
-export function getListData(page) {
-	let url = '/api/homelist/' + encodeURIComponent('北京') + '/' + page
+export function getListData(page, cityName) {
+	let url = '/api/homelist/' + encodeURIComponent(cityName) + '/' + page
 	let result = fetch(url, {
 		credentials: 'include',
 		headers: {

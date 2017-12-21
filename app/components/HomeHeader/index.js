@@ -17,7 +17,7 @@ class Homeheader extends React.Component {
 			<div id='home-header' className='clear-fix'>
 				<div className="home-header-left float-left">
 					<Link to='/city'>
-						<span>{this.props.cityName}</span>
+						<span>{this.props.city}</span>
 						&nbsp;
 						<i className="iconfont icon-arrow-down-new"></i>	
 					</Link>
