@@ -12,11 +12,11 @@ class Home extends React.Component {
 	render() {
 		return (
 			<div>
-				<HomeHeader cityName={this.props.cityName}/>
+				<HomeHeader cityName={this.props.userinfo.cityName}/>
 				<Category />
 				<div style={{height: '15px'}}></div>
 				<Ad />
-				<List cityName={this.props.cityName}/>
+				<List cityName={this.props.userinfo.cityName}/>
 			</div>
 		)
 	}
@@ -24,7 +24,7 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		cityName: state.userinfo.cityName
+		userinfo: state.userinfo
 	}
 }
 

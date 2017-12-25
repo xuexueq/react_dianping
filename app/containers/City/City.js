@@ -19,22 +19,22 @@ class City extends React.Component {
 		return (
 			<div>
 				<Header title='选择城市'/>
-				<CurrentCity cityName={this.props.userinfo.cityName}/>
+				<CurrentCity cityName={this.props.cityName}/>
 				<CityList changeFn={this.changeCity.bind(this)}/>
 			</div>
 		)
 	}
 
 	changeCity(newCity) {
-		let userinfo = this.props.userinfo
-		userinfo.cityName = newCity
+		let cityName = this.props.cityName
+		cityName = newCity
 
 		//更新到redux
-		this.props.userInfoActions.update(userinfo)
-			//this.props.userInfoActions.update({cityName: userinfo.cityName})
+		//this.props.userInfoActions.update(userinfo)
+			this.props.userInfoActions.update({cityName: cityName})
 
 		//将城市存入本地
-		localStore.setItem('city', userinfo.cityName)
+		localStore.setItem('city', cityName)
 
 		//跳到首页 react-router 4
 		history.push({
@@ -45,7 +45,7 @@ class City extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		userinfo: state.userinfo
+		cityName: state.userinfo.cityName
 	}
 }
 
