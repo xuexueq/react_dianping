@@ -26,7 +26,7 @@ class City extends React.Component {
 	}
 
 	changeCity(newCity) {
-		let userinfo = this.props.userinfo
+		let userinfo = JSON.parse(JSON.stringify(this.props.userinfo))//不能直接修改state
 		userinfo.cityName = newCity
 
 		//更新到redux
