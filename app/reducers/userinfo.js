@@ -6,6 +6,7 @@ export default function userinfo(state = initialState, action) {
 		case 'USERINFO_UPDATE':
 			//return action.data
 			return {
+				...state,
 				cityName: action.data.cityName
 			}
 
