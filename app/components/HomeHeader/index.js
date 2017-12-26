@@ -3,8 +3,11 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {
 	Link
 } from 'react-router-dom'
+import createHashHistory from 'history/createHashHistory'
+const hashHistory = createHashHistory() //react-router 4
 
 import './style.less'
+import SearchInput from '../SearchInput/'
 
 class Homeheader extends React.Component {
 	constructor(props) {
@@ -28,11 +31,18 @@ class Homeheader extends React.Component {
 				<div className="home-header-middle">
 					<div className="search-container">
 						<i className="iconfont icon-seach"></i>
-						<input type="text" placeholder='请输入关键字'/>
+						&nbsp;
+						<SearchInput value='' enterHandle={this.enterHandle.bind(this)}/>
 					</div>
 				</div>
 			</div>
 		)
+	}
+
+	enterHandle(value) {
+		hashHistory.push({
+			pathname: `/search/all/${encodeURIComponent(value)}`
+		})
 	}
 }
 

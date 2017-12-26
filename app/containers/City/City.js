@@ -6,7 +6,7 @@ import {
 	bindActionCreators
 } from 'redux'
 import createHashHistory from 'history/createHashHistory'
-const history = createHashHistory() //react-router 4
+const hashHistory = createHashHistory() //react-router 4
 
 import Header from '../../components/Header/Header'
 import CurrentCity from '../../components/CurrentCity/'
@@ -30,14 +30,14 @@ class City extends React.Component {
 		userinfo.cityName = newCity
 
 		//更新到redux
-		this.props.userInfoActions.update(userinfo)
-			//this.props.userInfoActions.update({cityName: userinfo.cityName})
+		//this.props.userInfoActions.update(userinfo)
+		this.props.userInfoActions.update({cityName: userinfo.cityName})
 
 		//将城市存入本地
 		localStore.setItem('city', userinfo.cityName)
 
 		//跳到首页 react-router 4
-		history.push({
+		hashHistory.push({
 			pathname: '/'
 		})
 	}
