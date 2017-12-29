@@ -32,7 +32,7 @@ router.get('/api/homelist/:city/:page', function(ctx, next) {
 	ctx.body = homeListData
 });
 
-//搜索页面
+//搜索页面 首页输入框搜索 三个参数
 const searchListData = require('./search/list.js')
 router.get('/api/searchlist/:cityName/:page/:category/:keyword', function(ctx, next) {
 	let params = ctx.params
@@ -41,9 +41,21 @@ router.get('/api/searchlist/:cityName/:page/:category/:keyword', function(ctx, n
 	const keyword = params.keyword
 	const city = params.cityName
 	console.log('当前城市：' + city)
-	console.log('搜索结果页数：'+ page)
+	console.log('当前页数：'+ page)
 	console.log('当前类别：' + category)
     console.log('关键字：' + keyword)
+	console.log('-----------')
+	ctx.body = searchListData
+})
+//从轮播图进入 两个参数
+router.get('/api/searchlist/:cityName/:page/:category', function(ctx, next) {
+	let params = ctx.params
+	const page = params.page
+	const category = params.category
+	const city = params.cityName
+	console.log('当前城市：' + city)
+	console.log('当前页数：'+ page)
+	console.log('当前类别：' + category)
 	console.log('-----------')
 	ctx.body = searchListData
 })

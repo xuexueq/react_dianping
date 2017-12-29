@@ -22,8 +22,9 @@ export function getListData(page, cityName) {
 	return result
 }
 
-export function getSearchData(page, cityName, category, keyword ) {
-	let url = `api/searchlist/${encodeURIComponent(cityName)}/${page}/${category}/${keyword}`
+export function getSearchData(page, cityName, category, keyword) {
+	let keywordStr = keyword ? `/${keyword}` : ''
+	let url = `api/searchlist/${encodeURIComponent(cityName)}/${page}/${category}${keywordStr}`
 	let result = fetch(url, {
 		credentials: 'include',
 		headers: {

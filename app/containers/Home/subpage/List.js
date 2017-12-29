@@ -37,7 +37,7 @@ class List extends React.Component {
 		)
 	}
 
-	//加载后台数据
+	//加载更多数据
 	loadMoreData() {
 		this.setState({
 			isLoadingMore: true

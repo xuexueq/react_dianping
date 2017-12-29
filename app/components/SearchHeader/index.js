@@ -1,4 +1,6 @@
 import React from 'react'
+import createHashHistory from 'history/createHashHistory'
+const hashHistory = createHashHistory() //react-router 4
 
 import SearchInput from '../SearchInput/'
 import './style.less'
@@ -23,8 +25,10 @@ class SearchHeader extends React.Component {
 		window.history.back()
 	}
 
-	enterHandle() {
-
+	enterHandle(value) {
+		hashHistory.push({
+			pathname: `/search/all/${encodeURIComponent(value)}`
+		})
 	}
 }
 
