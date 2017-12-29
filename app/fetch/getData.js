@@ -33,3 +33,14 @@ export function getSearchData(page, cityName, category, keyword) {
 	})
 	return result
 }
+
+export function getDetailData(id) {
+	let url = `/api/detail/info/${id}`
+	let result = fetch(url, {
+		credentials: 'include',
+		headers: {
+			'Accept': 'application/json, text/plain, */*'
+		}
+	})
+	return result
+}

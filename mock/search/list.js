@@ -18,7 +18,7 @@ module.exports = {
             number: '689'
         },
         {
-            img: 'https://raw.githubusercontent.com/xuexueq/fileupload/7b9fdc4013fc5b5eac3fd18840411fe749c14048/images/dianping-138012-20161022145755545-1770557408.jpg',
+            img: 'https://raw.githubusercontent.com/xuexueq/fileupload/7b9fdc4013fc5b5eac3fd18840411fe749c14048/images/dianping-138012-20161022145806201-1193851669.jpg',
             title: '北方涮肉',
             subTitle: '什刹海店',
             price: '92',

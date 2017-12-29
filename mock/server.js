@@ -60,6 +60,15 @@ router.get('/api/searchlist/:cityName/:page/:category', function(ctx, next) {
 	ctx.body = searchListData
 })
 
+let detailData = require('./detail/info.js')
+router.get('/api/detail/info/:id', function(ctx, next) {
+	console.log('详情页-商户信息')
+	let params = ctx.params
+	const id = params.id
+	console.log('商户id:' + id)
+	ctx.body = detailData
+})
+
 // 开始服务并生成路由
 app.use(router.routes())
 	.use(router.allowedMethods());
