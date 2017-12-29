@@ -23,7 +23,6 @@ class DetailInfo extends React.Component {
 				</div>
 				<p dangerouslySetInnerHTML={{__html: data.desc}} className="info-desc"></p>
 			</div>
-
 		)
 	}
 }
