@@ -44,3 +44,14 @@ export function getDetailData(id) {
 	})
 	return result
 }
+
+export function getCommentData(page, id) {
+	let url = `/api/detail/comment/${id}/${page}`
+	let result = fetch(url, {
+		credentials: 'include',
+		headers: {
+			'Accept': 'application/json, text/plain, */*'
+		}
+	})
+	return result
+}

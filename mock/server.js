@@ -60,6 +60,7 @@ router.get('/api/searchlist/:cityName/:page/:category', function(ctx, next) {
 	ctx.body = searchListData
 })
 
+//商户搜索页--详情页
 let detailData = require('./detail/info.js')
 router.get('/api/detail/info/:id', function(ctx, next) {
 	console.log('详情页-商户信息')
@@ -67,6 +68,14 @@ router.get('/api/detail/info/:id', function(ctx, next) {
 	const id = params.id
 	console.log('商户id:' + id)
 	ctx.body = detailData
+})
+
+//商户搜索页--评论页
+let commentData = require('./detail/comment.js')
+router.get('/api/detail/comment/:id/:page', function(ctx, next) {
+	let page = ctx.params.page
+	console.log('商品评论页数：' + page)
+	ctx.body = commentData
 })
 
 // 开始服务并生成路由
