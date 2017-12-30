@@ -7,7 +7,8 @@ export default function userinfo(state = initialState, action) {
 			//return action.data
 			return {
 				...state,
-				cityName: action.data.cityName
+				cityName: action.data.cityName,
+				username: action.username
 			}
 
 		default:

@@ -26,7 +26,9 @@ class Homeheader extends React.Component {
 					</Link>
 				</div>
 				<div className="home-header-right float-right">
-					<i className="iconfont icon-user"></i>
+					<Link to='/Login'>
+						<i className="iconfont icon-user"></i>
+					</Link>
 				</div>
 				<div className="home-header-middle">
 					<div className="search-container">
