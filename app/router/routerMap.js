@@ -12,6 +12,7 @@ import City from '../containers/City/City'
 import Search from '../containers/Search/'
 import Detail from '../containers/Detail/'
 import Login from '../containers/Login/'
+import User from '../containers/User/'
 import NotFound from '../containers/NotFound'
 
 class routerMap extends React.Component {
@@ -26,6 +27,7 @@ class routerMap extends React.Component {
 							<Route exact path='/search/:category/:keyword?' component={Search} />
 							<Route exact path='/detail/:id' component={Detail} />
 							<Route exact path='/Login' component={Login}/>
+							<Route exact path='/User' component={User} />
 							<Route component={NotFound}/>								
 						</Switch>
 					
