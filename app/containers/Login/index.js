@@ -58,8 +58,18 @@ class Login extends React.Component {
 		userinfo.username = username
 		this.props.userInfoAction.update(userinfo)
 
-		//登录后跳到用户中心界面
-		//this.goUserPage()
+		let router = this.props.match.params.router || ''
+		console.log(router)
+		if(router) {
+			hashHistory.push({
+				//解码
+				pathname: decodeURIComponent(router)
+			})
+		}else {
+			//登录后跳到用户中心界面
+			//this.goUserPage()		
+		}
+
 	}
 }
 
