@@ -47,9 +47,9 @@ class Login extends React.Component {
 	}
 
 	goUserPage() {
-		hashHistory.push({
-			pathname: '/User'
-		})
+		// hashHistory.push({
+		// 	pathname: '/User'
+		// })
 	}
 
 	loginHandle(username) {

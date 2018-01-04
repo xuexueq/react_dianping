@@ -10,7 +10,7 @@ class Detail extends React.Component {
 		let id = this.props.match.params.id
 		return (
 			<div>
-				<Header title='商户详情'/>
+				<Header title='商户详情' gohome='首页'/>
 				<Info id={id}/>
 				<Buy id={id}/>
 				<Comment id={id}/>

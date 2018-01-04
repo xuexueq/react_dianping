@@ -2,8 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import createHashHistory from 'history/createHashHistory'
 const hashHistory = createHashHistory() //react-router 4
+import { bindActionCreators } from 'redux'
 
 import BuyAndStore from '../../../components/BuyAndStore/'
+import storeActions from '../../../actions/store'
 
 class Buy extends React.Component {
 	constructor(props) {
@@ -15,9 +17,13 @@ class Buy extends React.Component {
 	render() {
 		return (
 			<div>
-				<BuyAndStore isStore={this.state.isStore} buyHandle={this.buyHandle.bind(this)}/>
+				<BuyAndStore isStore={this.state.isStore} buyHandle={this.buyHandle.bind(this)} storeHandle={this.storeHandle.bind(this)}/>
 			</div>
 		)
+	}
+
+	componentDidMount() {
+
 	}
 
 	checkLogin() {
@@ -34,9 +40,9 @@ class Buy extends React.Component {
 	}
 
 	goUserPage() {
-		hashHistory.push({
-			pathname: '/User'
-		})
+		// hashHistory.push({
+		// 	pathname: '/User'
+		// })
 	}
 
 	buyHandle() {
@@ -52,6 +58,29 @@ class Buy extends React.Component {
 		this.goUserPage()
 
 	}
+
+	storeHandle() {
+		let loginState = this.checkLogin()
+		if( ! loginState) {
+			return
+		}
+
+		let isStore = this.state.isStore
+		let id = this.props.id
+		if(isStore) {
+			//取消收藏
+			this.props.storeActions.rm({id: id})
+		}else {
+			//进行收藏
+			this.props.storeActions.add({id: id})
+		}
+
+		//更新状态！！！
+		this.setState({
+			isStore: !isStore
+		})
+
+	}
 }
 
 function mapStateToProps(state) {
@@ -62,7 +91,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-
+		storeActions: bindActionCreators(storeActions, dispatch)
 	}
 }
 
