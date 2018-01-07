@@ -47,9 +47,9 @@ class Login extends React.Component {
 	}
 
 	goUserPage() {
-		// hashHistory.push({
-		// 	pathname: '/User'
-		// })
+		hashHistory.push({
+			pathname: '/User'
+		})
 	}
 
 	loginHandle(username) {
@@ -67,7 +67,7 @@ class Login extends React.Component {
 			})
 		}else {
 			//登录后跳到用户中心界面
-			//this.goUserPage()		
+			this.goUserPage()		
 		}
 
 	}

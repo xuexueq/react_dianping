@@ -78,6 +78,14 @@ router.get('/api/detail/comment/:id/:page', function(ctx, next) {
 	ctx.body = commentData
 })
 
+//用户中心页---订单数据
+let orderListData = require('./user/order.js')
+router.get('/api/orderlist/:username', function(ctx, next) {
+	let username = ctx.params.username
+	console.log('用户：' + username)
+	ctx.body = orderListData
+})
+
 // 开始服务并生成路由
 app.use(router.routes())
 	.use(router.allowedMethods());

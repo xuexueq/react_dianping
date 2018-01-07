@@ -55,3 +55,14 @@ export function getCommentData(page, id) {
 	})
 	return result
 }
+
+export function getOrderData(username) {
+	let url = `/api/orderlist/${username}`
+	let result = fetch(url, {
+		credentials: 'include',
+		headers: {
+			'Accept': 'application/json, text/plain, */*'
+		}
+	})
+	return result
+}

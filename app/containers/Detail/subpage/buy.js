@@ -23,7 +23,24 @@ class Buy extends React.Component {
 	}
 
 	componentDidMount() {
+		//验证当前商户是否收藏
+		this.storeState()
+	}
 
+	storeState() {
+		let id = this.props.id
+		let store = this.props.store
+		let isStore = this.props.isStore
+
+		store.some(item => {
+			if(item.id === id) {
+				this.setState({
+					isStore: true   //将状态更改为已收藏
+				})
+				//跳出循环
+				return true
+			}
+		})
 	}
 
 	checkLogin() {
@@ -40,9 +57,9 @@ class Buy extends React.Component {
 	}
 
 	goUserPage() {
-		// hashHistory.push({
-		// 	pathname: '/User'
-		// })
+		hashHistory.push({
+			pathname: '/User'
+		})
 	}
 
 	buyHandle() {
@@ -85,7 +102,8 @@ class Buy extends React.Component {
 
 function mapStateToProps(state) {
 	return {
-		userinfo: state.userinfo
+		userinfo: state.userinfo,
+		store: state.store
 	}
 }
 

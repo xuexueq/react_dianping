@@ -17,7 +17,7 @@ class Header extends React.Component {
 	}
 
 	clickHander() {
-		if(this.props.gohome) {
+		if(this.props.backRouter) {
 			hashHistory.push({
 				pathname: '/'
 			})
