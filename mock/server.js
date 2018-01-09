@@ -86,6 +86,15 @@ router.get('/api/orderlist/:username', function(ctx, next) {
 	ctx.body = orderListData
 })
 
+//用户中心页---提交评价
+router.get('/api/submit/comment', function(ctx, next) {
+	console.log('提交评价')
+	ctx.body = {
+		noerr: 0,
+		msg: 'ok'
+	}
+})
+
 // 开始服务并生成路由
 app.use(router.routes())
 	.use(router.allowedMethods());

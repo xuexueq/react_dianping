@@ -66,3 +66,26 @@ export function getOrderData(username) {
 	})
 	return result
 }
+
+export function submitCommentData(obj) {
+	function stringparams(obj) {
+		let result = ''
+		let item
+		for(item in obj) {
+			result += `&${item}=${obj[item]}`
+		}
+		return result
+	}
+
+	let url = '/api/submit/comment'
+	let result = fetch(url, {
+		method: 'POST',
+		credentials: 'include',
+		headers: {
+			'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/x-www-form-urlencoded'
+		},
+		body: stringparams(obj)
+	})
+	return result
+}

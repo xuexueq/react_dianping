@@ -3,7 +3,7 @@ import createHashHistory from 'history/createHashHistory'
 const hashHistory = createHashHistory()
 
 import './style.less'
-import { getOrderData } from '../../../fetch/getData'
+import { getOrderData, submitCommentData } from '../../../fetch/getData'
 import OrderInfo from '../../../components/OrderInfo/'
 
 class OrderList extends React.Component {
@@ -20,7 +20,7 @@ class OrderList extends React.Component {
 				<h2>您的订单</h2>
 				{
 					this.state.data.length
-					? <OrderInfo data={this.state.data} />
+					? <OrderInfo data={this.state.data} submitComment={this.submitComment.bind(this)}/>
 					: '暂无订单'
 				}
 			</div>
@@ -53,6 +53,16 @@ class OrderList extends React.Component {
                 console.error('用户主页“订单列表”获取数据报错, ', ex.message)
             }
         })
+	}
+
+	submitComment(id, value, callback) {
+		let result = submitCommentData({id: id, comment: value})
+		result.then(res => res.json())
+		.then((json) => {
+			if(json.noerr === 0) {
+				callback()
+			}
+		})
 	}
 }
 
