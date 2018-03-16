@@ -1,6 +1,4 @@
 import React from 'react'
-import createHashHistory from 'history/createHashHistory'
-const hashHistory = createHashHistory()
 
 import './style.less'
 import { getOrderData, submitCommentData } from '../../../fetch/getData'
@@ -28,14 +26,6 @@ class OrderList extends React.Component {
 	}
 
 	componentDidMount() {
-		if( ! this.props.username) {
-			hashHistory.push({
-				pathname: '/Login'
-			})
-
-			return
-		}
-
 		this.getData()
 	}
 

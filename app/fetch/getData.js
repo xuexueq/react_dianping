@@ -74,8 +74,10 @@ export function submitCommentData(obj) {
 		for(item in obj) {
 			result += `&${item}=${obj[item]}`
 		}
+		console.log('comment-result',result)
 		return result
 	}
+
 
 	let url = '/api/submit/comment'
 	let result = fetch(url, {
@@ -86,6 +88,7 @@ export function submitCommentData(obj) {
             'Content-Type': 'application/x-www-form-urlencoded'
 		},
 		body: stringparams(obj)
+		//body: JSON.stringify(obj) Fetch发送POST请求body体形式
 	})
 	return result
 }

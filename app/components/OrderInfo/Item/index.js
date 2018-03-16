@@ -6,7 +6,7 @@ class OrderIndo extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			commentState: 0
+			commentState: 0  //commentState  0-未评价 1-评价中 2-已评价
 		}
 	}
 
@@ -50,6 +50,7 @@ class OrderIndo extends React.Component {
 	}
 
 	componentDidMount() {
+		// 将状态维护到 state 中
 		let commentState = this.props.data.commentState
 		this.setState({
 			commentState: commentState
@@ -69,7 +70,7 @@ class OrderIndo extends React.Component {
 			console.log('请输入评论内容')
 			return
 		}
-		this.props.submitComment(id, value, this.submitSuccess)
+		this.props.submitComment(id, value, this.submitSuccess.bind(this))
 	}
 
 	hideComment() {
@@ -78,6 +79,7 @@ class OrderIndo extends React.Component {
 		})
 	}
 
+	//注意，`this.submitSuccess.bind(this)`作为一个 callback 传递到 `submitComment`中，提交数据成功之后再回调。因此提交数据是一个异步的过程。
 	submitSuccess() {
 		this.setState({
 			commentState: 2

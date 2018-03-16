@@ -87,7 +87,7 @@ router.get('/api/orderlist/:username', function(ctx, next) {
 })
 
 //用户中心页---提交评价
-router.get('/api/submit/comment', function(ctx, next) {
+router.post('/api/submit/comment', function(ctx, next) {
 	console.log('提交评价')
 	ctx.body = {
 		noerr: 0,
