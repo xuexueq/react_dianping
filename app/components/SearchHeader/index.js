@@ -1,13 +1,12 @@
 import React from 'react'
-import createHashHistory from 'history/createHashHistory'
-const hashHistory = createHashHistory() //react-router 4
+import hostory from '../../router/history.js';
 
 import SearchInput from '../SearchInput/'
 import './style.less'
 
 class SearchHeader extends React.Component {
 	render() {
-		return (			
+		return (
 			<div id='search-header' className='clear-fix'>
 				<span className='back-icon float-left' onClick={this.clickHandle.bind(this)}>
 					<i className="iconfont icon-arrow-left"></i>
@@ -26,7 +25,7 @@ class SearchHeader extends React.Component {
 	}
 
 	enterHandle(value) {
-		hashHistory.push({
+		hostory.push({
 			pathname: `/search/all/${encodeURIComponent(value)}`
 		})
 	}

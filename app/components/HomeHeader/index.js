@@ -3,8 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {
 	Link
 } from 'react-router-dom'
-import createHashHistory from 'history/createHashHistory'
-const hashHistory = createHashHistory() //react-router 4
+import hostory from '../../router/history.js';
 
 import './style.less'
 import SearchInput from '../SearchInput/'
@@ -22,7 +21,7 @@ class Homeheader extends React.Component {
 					<Link to='/city'>
 						<span>{this.props.cityName}</span>
 						&nbsp;
-						<i className="iconfont icon-arrow-down-new"></i>	
+						<i className="iconfont icon-arrow-down-new"></i>
 					</Link>
 				</div>
 				<div className="home-header-right float-right">
@@ -42,7 +41,7 @@ class Homeheader extends React.Component {
 	}
 
 	enterHandle(value) {
-		hashHistory.push({
+		history.push({
 			pathname: `/search/all/${encodeURIComponent(value)}`
 		})
 	}

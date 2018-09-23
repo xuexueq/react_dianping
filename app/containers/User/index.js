@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import createHashHistory from 'history/createHashHistory'
-const hashHistory = createHashHistory()
+import hostory from '../../router/history.js';
 
 import Header from '../../components/Header/Header'
 import UserInfo from '../../components/UserInfo/'
@@ -20,7 +19,7 @@ class User extends React.Component {
 
 	componentDidMount() {
 		if( ! this.props.userinfo.username) {
-			hashHistory.push({
+			hostory.push({
 				pathname: '/Login'
 			})
 

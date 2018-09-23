@@ -5,19 +5,19 @@ import {
 import {
 	Provider
 } from 'react-redux'
-import createHashHistory from 'history/createHashHistory'
-
+// import createHashHistory from 'history/createHashHistory'
+// import createHistory from 'history/createBrowserHistory';
 import configStore from './store/configStore'
 import RouterMap from './router/routerMap'
 
 import './static/css/common.less'
 
 const store = configStore()
-const history = createHashHistory() //react-router 4
+// const history = createHistory() //react-router 4
 
 render(
 	<Provider store={store}>
-		<RouterMap history={history}/>
+		<RouterMap />
 	</Provider>,
 	document.getElementById('root')
 )

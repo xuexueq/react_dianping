@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import createHashHistory from 'history/createHashHistory'
-const hashHistory = createHashHistory() //react-router 4
+import hostory from '../../../router/history.js';
 import { bindActionCreators } from 'redux'
 
 import BuyAndStore from '../../../components/BuyAndStore/'
@@ -48,7 +47,7 @@ class Buy extends React.Component {
 		let id = this.props.id
 
 		if(!userinfo.username) {
-			hashHistory.push({
+			hostory.push({
 				pathname: '/Login/' + encodeURIComponent('/detail/' + id)
 			})
 			return false
@@ -57,7 +56,7 @@ class Buy extends React.Component {
 	}
 
 	goUserPage() {
-		hashHistory.push({
+		hostory.push({
 			pathname: '/User'
 		})
 	}

@@ -1,6 +1,5 @@
 import React from 'react'
-import createHashHistory from 'history/createHashHistory'
-const hashHistory = createHashHistory() //react-router 4
+import hostory from '../../router/history.js';
 
 import './style.less'
 
@@ -18,13 +17,12 @@ class Header extends React.Component {
 
 	clickHander() {
 		if(this.props.backRouter) {
-			hashHistory.push({
+			hostory.push({
 				pathname: '/'
 			})
 		}else {
 			window.history.back()
 		}
-		
 	}
 }
 

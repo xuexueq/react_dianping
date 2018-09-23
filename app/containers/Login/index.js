@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import createHashHistory from 'history/createHashHistory'
-const hashHistory = createHashHistory()
+import hostory from '../../router/history.js';
 
 import Header from '../../components/Header/Header'
 import LoginComponent from '../../components/LoginComponent/'
@@ -47,7 +46,7 @@ class Login extends React.Component {
 	}
 
 	goUserPage() {
-		hashHistory.push({
+		hostory.push({
 			pathname: '/User'
 		})
 	}
@@ -61,13 +60,13 @@ class Login extends React.Component {
 		let router = this.props.match.params.router || ''
 		console.log(router)
 		if(router) {
-			hashHistory.push({
+			hostory.push({
 				//解码
 				pathname: decodeURIComponent(router)
 			})
 		}else {
 			//登录后跳到用户中心界面
-			this.goUserPage()		
+			this.goUserPage()
 		}
 
 	}

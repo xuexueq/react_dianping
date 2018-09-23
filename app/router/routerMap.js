@@ -5,7 +5,7 @@ import {
 	IndexRoute,
 	Switch
 } from 'react-router-dom'
-
+import history from './history.js';
 import App from '../containers/app'
 import Home from '../containers/Home/'
 import City from '../containers/City/City'
@@ -18,7 +18,7 @@ import NotFound from '../containers/NotFound'
 class routerMap extends React.Component {
 	render() {
 		return (
-			<Router history={this.props.history}>
+			<Router history={history}>
 				<Route path='/' component={(props) => (
 					<App {...props}>
 						<Switch>
@@ -28,9 +28,8 @@ class routerMap extends React.Component {
 							<Route exact path='/detail/:id' component={Detail} />
 							<Route exact path='/Login/:router?' component={Login}/>
 							<Route exact path='/User' component={User} />
-							<Route component={NotFound}/>								
+							<Route component={NotFound}/>
 						</Switch>
-					
 					</App>
 				)} />
 			</Router>
