@@ -15,7 +15,7 @@ class App extends React.Component {
 		super(props)
 		this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
 		this.state = {
-			initDone: false
+			initDone: true
 		}
 	}
 
@@ -31,23 +31,27 @@ class App extends React.Component {
 
 	componentDidMount() {
 		//获取位置信息
-		let cityName = LocalStore.getItem('city')
-		if (cityName == null) {
-			cityName = '北京'
+		// let cityName = LocalStore.getItem('city')
+		// if (cityName == null) {
+		// 	cityName = '北京'
+		// }
+		if (!this.props.userinfo.cityName) {
+			const cityName = '北京';
+			this.props.userInfoActions.update({
+				cityName
+			})
 		}
 		//console.log(cityName)
-		this.props.userInfoActions.update({
-			cityName: cityName
-		})
-
-		this.setState({
-			initDone: true
-		})
+		// this.setState({
+		// 	initDone: true
+		// })
 	}
 }
 
 function mapStateToProps(state) {
-	return {}
+	return {
+		userinfo: state.userinfo
+	}
 }
 
 function mapDispatchToProps(dispatch) {

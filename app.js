@@ -1,3 +1,9 @@
+require.extensions['.less'] = function(){
+	return null;
+}
+require.extensions['.css'] = function(){
+	return null;
+}
 const koa = require('koa');
 const logger = require('koa-logger');
 const serve = require('koa-static');
@@ -9,9 +15,6 @@ const historyFallback = require('koa2-history-api-fallback')
 const path = require('path');
 const app = new koa();
 require('./routes.js')(router);
-
-// router to front-end
-app.use(historyFallback())
 // Logger
 app.use(logger());
 
@@ -30,11 +33,15 @@ render(app, {
 });
 
 app.use(serve(path.join(__dirname, 'build'),{
-	maxage:100 * 24 * 60 * 60
+	maxage:100 * 24 * 60 * 60,
+	index: false
 }));
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+
+// router to front-end
+app.use(historyFallback())
 
 app.listen(3000);
 console.log('start on port: 3000');

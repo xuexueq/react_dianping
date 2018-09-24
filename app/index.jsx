@@ -1,23 +1,13 @@
 import React from 'react'
 import {
-	render
+	hydrate
 } from 'react-dom'
-import {
-	Provider
-} from 'react-redux'
-// import createHashHistory from 'history/createHashHistory'
-// import createHistory from 'history/createBrowserHistory';
+import App from './app.jsx';
 import configStore from './store/configStore'
-import RouterMap from './router/routerMap'
+const preloadedState = window.__INITIAL_STATE__;
+const store = configStore(preloadedState);
 
-import './static/css/common.less'
-
-const store = configStore()
-// const history = createHistory() //react-router 4
-
-render(
-	<Provider store={store}>
-		<RouterMap />
-	</Provider>,
+hydrate(
+	<App store={store}/>,
 	document.getElementById('root')
 )

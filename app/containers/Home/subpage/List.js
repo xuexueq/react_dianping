@@ -50,7 +50,20 @@ class List extends React.Component {
 	//获取首页数据
 	componentDidMount() {
 		//console.log('cityname', this.props.cityName)
-		this.getData(this.state.page)
+		// this.getData(this.state.page)
+		const ssr_list_data = window.ssr_list_data;
+
+		let data = ssr_list_data.data
+		let hasMore = ssr_list_data.hasMore
+			//console.log(data)
+		if (data.length) {
+			this.setState({
+				data: this.state.data.concat(data),
+				hasMore: hasMore,
+				page: this.state.page + 1,
+				isLoadingMore: false
+			})
+		}
 	}
 
 	//获取后台列表数据

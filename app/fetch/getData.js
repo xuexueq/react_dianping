@@ -1,5 +1,4 @@
-import 'whatwg-fetch'
-import 'es6-promise'
+require('isomorphic-fetch');
 
 export function getAdData(url) {
 	let result = fetch(url, {

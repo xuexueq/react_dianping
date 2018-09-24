@@ -1,7 +1,28 @@
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import App from './app/app.jsx';
+import configStore from './app/store/configStore'
+import { loadTemplate, loadListData } from './ssr/load.js';
+
 function registerRouter(router) {
 	router.get('/',async (ctx,next)=>{
-		ctx.render('index.html',{})
-		await next()
+		let cityName = '北京';
+		if (ctx.headers.cookie && ctx.headers.cookie.cityName) {
+			cityName = ctx.headers.cookie.cityName;
+		}
+		const initialData = {userinfo:{cityName: cityName}};
+		const listRes = await loadListData(0, cityName, ctx.protocol, ctx.headers.host);
+		const listData = await listRes.json();
+		const htmlTemplate = loadTemplate();
+		const store = configStore({userinfo:{cityName}});
+		const page = ReactDOMServer.renderToString(<App store={store} />);
+		const html = htmlTemplate.replace('<div id="root"></div>',
+			`<div id="root">${page}</div>
+			<script>
+				window.__INITIAL_STATE__=${JSON.stringify(initialData)}
+				window.ssr_list_data=${JSON.stringify(listData)}
+			</script>`);
+		ctx.body = html;
 	})
 
 	const homeAdData = require('./mock/home/ad.js')
